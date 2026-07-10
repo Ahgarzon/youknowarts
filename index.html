@@ -215,14 +215,14 @@ footer .gold{font-family:Georgia,serif}
       <p>Obras que ya viven en las paredes y mesas de nuestros clientes. Todas hechas por You Know Arts.</p>
     </div>
     <div class="gal reveal">
-      <a class="big" href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post0.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post0.jpg" alt="Cuadro Avengers en resina epóxica"></a>
-      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post3.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post3.jpg" alt="Cuadro Super Mario Bros Peach"></a>
-      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post2.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post2.jpg" alt="Cuadro Dragon Ball en resina"></a>
-      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post5.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post5.jpg" alt="Portavasos Mafalda"></a>
-      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post10.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post10.jpg" alt="Portavasos iglesias de Popayán"></a>
-      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post9.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post9.jpg" alt="Portavasos frutas en resina"></a>
-      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post11.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post11.jpg" alt="Organizador de pinceles con frases"></a>
-      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/parques.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/parques.jpg" alt="Parqués Super Mario en resina epóxica"></a>
+      <a class="big lb-open" href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post0.jpg"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post0.jpg" alt="Cuadro Avengers en resina epóxica"></a>
+      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post3.jpg" class="lb-open"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post3.jpg" alt="Cuadro Super Mario Bros Peach"></a>
+      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post2.jpg" class="lb-open"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post2.jpg" alt="Cuadro Dragon Ball en resina"></a>
+      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post5.jpg" class="lb-open"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post5.jpg" alt="Portavasos Mafalda"></a>
+      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post10.jpg" class="lb-open"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post10.jpg" alt="Portavasos iglesias de Popayán"></a>
+      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post9.jpg" class="lb-open"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post9.jpg" alt="Portavasos frutas en resina"></a>
+      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post11.jpg" class="lb-open"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post11.jpg" alt="Organizador de pinceles con frases"></a>
+      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/parques.jpg" class="lb-open"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/parques.jpg" alt="Parqués Super Mario en resina epóxica"></a>
     </div>
   </div>
 </section>
@@ -372,6 +372,40 @@ footer .gold{font-family:Georgia,serif}
 
 <a class="float" href="https://wa.me/573162880943?text=Hola%20You%20Know%20Arts%20%F0%9F%91%8B%20vi%20su%20p%C3%A1gina%20y%20quiero%20pedir%20una%20pieza" target="_blank" rel="noopener">💬 Pedir por WhatsApp</a>
 
+<!-- Lightbox: ver la imagen completa SIN salir de la página -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <button id="lb-x" aria-label="Cerrar">&times;</button>
+  <img id="lb-img" src="" alt="">
+</div>
+<style>
+#lb{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;
+  background:rgba(8,8,10,.92);backdrop-filter:blur(4px);padding:24px;box-sizing:border-box;
+  opacity:0;transition:opacity .22s ease}
+#lb.on{display:flex;opacity:1}
+#lb-img{max-width:96vw;max-height:88vh;width:auto;height:auto;border-radius:12px;
+  box-shadow:0 20px 60px rgba(0,0,0,.6);object-fit:contain}
+#lb-x{position:absolute;top:16px;right:18px;width:46px;height:46px;border:0;border-radius:50%;
+  background:rgba(255,255,255,.12);color:#fff;font-size:2rem;line-height:1;cursor:pointer}
+#lb-x:hover{background:rgba(255,255,255,.22)}
+.gal a,.card .ph,.star .pic{cursor:zoom-in}
+</style>
+<script>
+(function(){
+  var lb=document.getElementById('lb'),img=document.getElementById('lb-img');
+  function open(src,alt){img.src=src;img.alt=alt||'';lb.classList.add('on');document.body.style.overflow='hidden';}
+  function close(){lb.classList.remove('on');document.body.style.overflow='';img.src='';}
+  // Toda imagen de galería, catálogo o combo abre el visor EN la misma página (nunca sale)
+  document.querySelectorAll('.gal a.lb-open, .card .ph img, .star .pic img').forEach(function(el){
+    var a=el.tagName==='A'?el:el.closest('a');
+    var src=a?a.getAttribute('href'):el.getAttribute('src');
+    var target=el.tagName==='IMG'?el:el.querySelector('img');
+    (a||el).addEventListener('click',function(e){e.preventDefault();open(src,target?target.alt:'');});
+  });
+  document.getElementById('lb-x').addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+</script>
 <script>
 (function(){
   var els=document.querySelectorAll('.reveal');
