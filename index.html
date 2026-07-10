@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You Know Arts · El arte de crear — Resina epóxica & fabricación digital · Popayán</title>
+<meta name="description" content="You Know Arts — El arte de crear. Cuadros en resina epóxica, portavasos personalizados y piezas funcionales con fabricación digital e impresión 3D. Popayán, Colombia.">
+<meta property="og:title" content="You Know Arts · El arte de crear">
+<meta property="og:description" content="Cuadros en resina epóxica, portavasos personalizados y piezas funcionales. Popayán, Colombia.">
+<meta property="og:image" content="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post0.jpg">
+<link rel="icon" href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/logo.jpg">
+<style>
+:root{
+  --ink:#0f0f10;        /* negro del logo */
+  --panel:#17171a;
+  --panel2:#1e1e22;
+  --gold:#e0a43a;       /* ámbar/dorado del logo (chispa láser), no neón */
+  --gold-deep:#c8862a;
+  --cream:#f7f3ea;
+  --muted:#a7a29a;
+  --line:rgba(224,164,58,.18);
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html,body{overflow-x:hidden;max-width:100%;width:100%}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ink);color:var(--cream);
+  font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,"DejaVu Sans",sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:Georgia,"Times New Roman","DejaVu Serif",serif;line-height:1.12;margin:0;overflow-wrap:break-word;word-wrap:break-word;min-width:0}
+p{overflow-wrap:break-word;word-wrap:break-word;min-width:0}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 22px}
+.gold{color:var(--gold)}
+
+/* ---------- HEADER ---------- */
+header{position:sticky;top:0;z-index:50;background:rgba(15,15,16,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 22px;max-width:1160px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand img{width:42px;height:42px;border-radius:11px;border:1px solid var(--line)}
+.brand b{font-family:Georgia,serif;font-size:1.02rem;letter-spacing:.3px;white-space:nowrap}
+.brand span{display:block;font-size:.62rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-top:1px}
+.nav-links{display:flex;gap:24px;font-size:.9rem;color:var(--muted)}
+.nav-links a:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#1a1206;font-weight:700;
+  padding:11px 20px;border-radius:999px;font-size:.9rem;border:none;cursor:pointer;transition:transform .18s,box-shadow .18s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(224,164,58,.32)}
+.btn.ghost{background:transparent;color:var(--cream);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold);box-shadow:none}
+@media(max-width:820px){.nav-links{display:none}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;text-align:center;padding:76px 0 66px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(60% 55% at 50% 22%,rgba(224,164,58,.16),transparent 70%),
+  radial-gradient(40% 40% at 85% 90%,rgba(200,134,42,.12),transparent 70%);pointer-events:none}
+.hero-logo{width:112px;height:112px;border-radius:26px;margin:0 auto 22px;border:1px solid var(--line);
+  box-shadow:0 18px 50px rgba(0,0,0,.55);position:relative;animation:float 5.5s ease-in-out infinite}
+.eyebrow{display:inline-block;font-size:.72rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);
+  border:1px solid var(--line);border-radius:999px;padding:7px 16px;margin-bottom:20px}
+.hero h1{font-size:clamp(2.4rem,7vw,4.7rem);position:relative}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.lead{max-width:640px;margin:20px auto 0;color:#d8d2c7;font-size:clamp(1rem,2.6vw,1.18rem)}
+.cta-row{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.badge{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 16px;font-size:.82rem;color:#cfc8bc}
+.badge b{color:var(--gold);font-family:Georgia,serif;font-size:1.05rem;display:block}
+
+/* ---------- MARQUEE ---------- */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel);overflow:hidden;padding:13px 0}
+.track{display:flex;gap:44px;width:max-content;animation:scroll 26s linear infinite;white-space:nowrap}
+.track span{font-family:Georgia,serif;font-size:1.02rem;letter-spacing:1px;color:#e9e2d5}
+.track span i{color:var(--gold);font-style:normal;margin-right:44px}
+
+/* ---------- SECTIONS ---------- */
+section{padding:72px 0}
+.sec-head{text-align:center;max-width:620px;margin:0 auto 46px}
+.sec-head .kick{font-size:.72rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-size:clamp(1.9rem,5vw,3rem);margin-top:12px}
+.sec-head p{color:var(--muted);margin-top:14px}
+
+/* ---------- GALLERY ---------- */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gal a{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);aspect-ratio:1/1;background:var(--panel)}
+.gal a.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gal a:hover img{transform:scale(1.07)}
+.gal a::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.5));opacity:0;transition:.3s}
+.gal a:hover::after{opacity:1}
+@media(max-width:720px){.gal{grid-template-columns:repeat(2,1fr)}.gal a.big{grid-column:span 2;grid-row:auto;aspect-ratio:1/1}}
+
+/* ---------- CATALOG ---------- */
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover{transform:translateY(-7px);box-shadow:0 18px 40px rgba(0,0,0,.45);border-color:var(--gold)}
+.card .ph{aspect-ratio:4/3;overflow:hidden;background:var(--panel2)}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .ph img{transform:scale(1.06)}
+.card .body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
+.card h3{font-size:1.25rem}
+.card p{color:var(--muted);font-size:.92rem;margin:0;flex:1}
+.tag{align-self:flex-start;font-size:.66rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);
+  border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.price{font-family:Georgia,serif;font-size:1.5rem;color:var(--gold)}
+.price small{font-size:.78rem;color:var(--muted);font-family:inherit;letter-spacing:1px}
+.card .btn{align-self:flex-start;margin-top:6px}
+@media(max-width:860px){.cats{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.cats{grid-template-columns:1fr}}
+
+/* ---------- STAR PRODUCT ---------- */
+.star{display:grid;grid-template-columns:1.05fr 1fr;gap:34px;align-items:center;
+  background:linear-gradient(135deg,var(--panel),var(--panel2));border:1px solid var(--line);
+  border-radius:26px;padding:26px;overflow:hidden}
+.star .pic{border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.star .pic img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.star h3{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:6px}
+.star .price{font-size:2.1rem;display:block;margin:14px 0}
+.star ul{list-style:none;padding:0;margin:0 0 20px;color:#d3ccc0}
+.star li{padding:5px 0 5px 24px;position:relative;font-size:.95rem}
+.star li::before{content:"◆";position:absolute;left:0;color:var(--gold);font-size:.7rem;top:9px}
+@media(max-width:760px){.star{grid-template-columns:1fr}}
+
+/* ---------- PROCESS ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px 20px;text-align:center}
+.step .ic{width:56px;height:56px;margin:0 auto 14px;border-radius:14px;background:rgba(224,164,58,.12);
+  border:1px solid var(--line);display:grid;place-items:center;font-size:1.5rem;animation:float 4s ease-in-out infinite}
+.step:nth-child(2) .ic{animation-delay:.5s}.step:nth-child(3) .ic{animation-delay:1s}.step:nth-child(4) .ic{animation-delay:1.5s}
+.step h3{font-size:1.1rem;margin-bottom:6px}
+.step p{color:var(--muted);font-size:.86rem;margin:0}
+@media(max-width:820px){.steps{grid-template-columns:1fr 1fr}}
+
+/* ---------- CONTACT ---------- */
+.contact{text-align:center;background:linear-gradient(180deg,var(--panel),var(--ink));border-top:1px solid var(--line)}
+.contact h2{font-size:clamp(1.9rem,5vw,3rem)}
+.contact p{color:var(--muted);max-width:520px;margin:14px auto 0}
+.chan{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+
+footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--muted);font-size:.85rem}
+footer img{width:38px;height:38px;border-radius:10px;margin:0 auto 12px;border:1px solid var(--line)}
+footer .gold{font-family:Georgia,serif}
+
+/* ---------- FLOATING ---------- */
+.float{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--gold);color:#1a1206;font-weight:700;
+  padding:14px 20px;border-radius:999px;box-shadow:0 12px 30px rgba(0,0,0,.4);display:flex;gap:9px;align-items:center;
+  font-size:.9rem;animation:pulse 2.6s ease-in-out infinite}
+.float:hover{transform:translateY(-3px)}
+
+/* ---------- ANIM ---------- */
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{box-shadow:0 12px 30px rgba(0,0,0,.4)}50%{box-shadow:0 12px 38px rgba(224,164,58,.5)}}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important}
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#top">
+      <img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/logo.jpg" alt="You Know Arts">
+      <span style="min-width:0"><b>You Know Arts</b><span>El arte de crear</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#galeria">Galería</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#proceso">Cómo lo hacemos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Pedir por Instagram</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <img class="hero-logo" src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/logo.jpg" alt="You Know Arts logo">
+    <span class="eyebrow">Resina epóxica · Fabricación digital · Popayán</span>
+    <h1>El arte de <em>crear</em><br>piezas únicas</h1>
+    <p class="lead">Cuadros en resina epóxica, portavasos personalizados y piezas funcionales, creados con impresión 3D, corte láser y acabado en resina. Cada obra, hecha a mano y a tu medida.</p>
+    <div class="cta-row">
+      <a class="btn" href="#catalogo">Ver el catálogo</a>
+      <a class="btn ghost" href="https://instagram.com/youknow_arts" target="_blank" rel="noopener">Síguenos en Instagram</a>
+    </div>
+    <div class="badges">
+      <div class="badge"><b>+50</b>obras creadas</div>
+      <div class="badge"><b>100%</b>hecho a mano</div>
+      <div class="badge"><b>A tu</b>medida</div>
+      <div class="badge"><b>Popayán</b>Colombia</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="track">
+    <span><i>Resina epóxica</i><i>Impresión 3D</i><i>Corte láser</i><i>Portavasos personalizados</i><i>Cuadros decorativos</i><i>Muebles funcionales</i><i>Diseño a tu medida</i></span>
+    <span><i>Resina epóxica</i><i>Impresión 3D</i><i>Corte láser</i><i>Portavasos personalizados</i><i>Cuadros decorativos</i><i>Muebles funcionales</i><i>Diseño a tu medida</i></span>
+  </div>
+</div>
+
+<section id="galeria">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kick">Nuestro trabajo</div>
+      <h2>Galería de piezas reales</h2>
+      <p>Obras que ya viven en las paredes y mesas de nuestros clientes. Todas hechas por You Know Arts.</p>
+    </div>
+    <div class="gal reveal">
+      <a class="big" href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post0.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post0.jpg" alt="Cuadro Avengers en resina epóxica"></a>
+      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post3.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post3.jpg" alt="Cuadro Super Mario Bros Peach"></a>
+      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post2.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post2.jpg" alt="Cuadro Dragon Ball en resina"></a>
+      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post5.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post5.jpg" alt="Portavasos Mafalda"></a>
+      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post10.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post10.jpg" alt="Portavasos iglesias de Popayán"></a>
+      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post9.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post9.jpg" alt="Portavasos frutas en resina"></a>
+      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post11.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post11.jpg" alt="Organizador de pinceles con frases"></a>
+      <a href="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post4.jpg" target="_blank"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post4.jpg" alt="Cuadro Super Mario Bros Deluxe"></a>
+    </div>
+  </div>
+</section>
+
+<section id="catalogo" style="background:linear-gradient(180deg,var(--ink),var(--panel) 50%,var(--ink))">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kick">Catálogo</div>
+      <h2>Qué creamos</h2>
+      <p>Precios reales de piezas que ya hacemos. ¿Quieres una idea distinta? La diseñamos contigo.</p>
+    </div>
+    <div class="cats">
+      <div class="card reveal">
+        <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post3.jpg" alt="Cuadros en resina epóxica"></div>
+        <div class="body">
+          <span class="tag">Cuadros</span>
+          <h3>Cuadros en resina epóxica</h3>
+          <p>Superhéroes, gaming y anime con impresión 3D y acabado brillante en resina. Formatos desde 50×30 cm.</p>
+          <span class="price"><small>Desde</small> $150.000</span>
+          <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post5.jpg" alt="Portavasos personalizados"></div>
+        <div class="body">
+          <span class="tag">Portavasos</span>
+          <h3>Sets de portavasos</h3>
+          <p>Sets x6 con acabado en resina e imán para la nevera: Mafalda, Dalí, Snoopy, frutas o el diseño que pidas.</p>
+          <span class="price"><small>Desde</small> $40.000</span>
+          <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post10.jpg" alt="Portavasos iglesias de Popayán"></div>
+        <div class="body">
+          <span class="tag">Popayán</span>
+          <h3>Línea Popayán</h3>
+          <p>Set x6 con las principales iglesias de Popayán. El regalo perfecto, con imán para la nevera.</p>
+          <span class="price">$40.000 <small>/ set x6</small></span>
+          <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post11.jpg" alt="Piezas funcionales personalizadas"></div>
+        <div class="body">
+          <span class="tag">Funcional</span>
+          <h3>Piezas funcionales</h3>
+          <p>Organizadores, portalápices y muebles pequeños grabados con frases o diseños que te representen.</p>
+          <span class="price"><small>Cotiza</small> tu idea</span>
+          <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Cotizar</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post9.jpg" alt="Portavasos frutas"></div>
+        <div class="body">
+          <span class="tag">Portavasos</span>
+          <h3>Set Fruit Cocktail</h3>
+          <p>Set x6 de frutas en resina, con base de madera y acabado brillante. Vivo, fresco y resistente.</p>
+          <span class="price">$40.000 <small>/ set x6</small></span>
+          <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post2.jpg" alt="Cuadro personalizado Dragon Ball"></div>
+        <div class="body">
+          <span class="tag">A tu medida</span>
+          <h3>Diseño personalizado</h3>
+          <p>¿Tienes un personaje, una foto o una idea? La convertimos en una pieza única en resina o madera.</p>
+          <span class="price"><small>Cotiza</small> tu diseño</span>
+          <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Cotizar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="estrella">
+  <div class="wrap">
+    <div class="star reveal">
+      <div class="pic"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post4.jpg" alt="Cuadro Super Mario Bros Deluxe"></div>
+      <div>
+        <span class="tag">Pieza estrella</span>
+        <h3>Cuadro Super Mario Bros Deluxe</h3>
+        <span class="price">$250.000</span>
+        <ul>
+          <li>Impresión 3D con acabado en resina epóxica</li>
+          <li>Dimensiones 50 × 37 × 4 cm</li>
+          <li>Efecto de profundidad, listo para colgar</li>
+          <li>Hecho por encargo — también en otros personajes</li>
+        </ul>
+        <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Pedir esta pieza</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso" style="background:var(--panel)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kick">Cómo lo hacemos</div>
+      <h2>De la idea a tu pared</h2>
+      <p>Fabricación digital y trabajo a mano, paso a paso.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><div class="ic">✏️</div><h3>1. Diseño</h3><p>Tomamos tu idea, foto o personaje y armamos el diseño digital.</p></div>
+      <div class="step"><div class="ic">⚙️</div><h3>2. Fabricación</h3><p>Impresión 3D y corte láser para dar forma a cada detalle.</p></div>
+      <div class="step"><div class="ic">💧</div><h3>3. Resina</h3><p>Acabado en resina epóxica: brillo, profundidad y durabilidad.</p></div>
+      <div class="step"><div class="ic">📦</div><h3>4. Entrega</h3><p>Lista para colgar o usar. Con envíos a todo Colombia.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kick" style="color:var(--gold);letter-spacing:4px;font-size:.72rem;text-transform:uppercase">Hablemos</div>
+      <h2 style="margin-top:12px">Creemos tu pieza</h2>
+      <p>Cuéntanos qué imaginas y te enviamos el diseño y el precio. Escríbenos directo por Instagram.</p>
+      <div class="chan">
+        <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Escribir por Instagram</a>
+        <a class="btn ghost" href="https://instagram.com/youknow_arts" target="_blank" rel="noopener">@youknow_arts</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/logo.jpg" alt="You Know Arts">
+    <p><span class="gold">You Know Arts</span> · El arte de crear · Popayán, Colombia</p>
+    <p style="opacity:.7;font-size:.78rem">Resina epóxica · Impresión 3D · Corte láser · Piezas personalizadas</p>
+  </div>
+</footer>
+
+<a class="float" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">✦ Pedir ahora</a>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('on')});return;}
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}});
+  },{threshold:.12});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
