@@ -923,7 +923,15 @@ footer .gold{font-family:Georgia,serif}
       </div>
 
       <div class="card reveal cat-card" data-cat="muebles">
-        <div class="ph"><img src="assets/mueble_ropero_espejo.jpg" alt="Ropero con espejo de cuerpo entero"></div>
+        <div class="ph ph-slider">
+          <div class="ph-slides">
+            <img src="assets/mueble_ropero_espejo.jpg" alt="Ropero con espejo de cuerpo entero - puerta cerrada">
+            <img src="assets/mueble_gabinete.jpg" alt="Ropero con espejo de cuerpo entero - puerta abierta">
+          </div>
+          <button class="slide-btn slide-prev">&#8249;</button>
+          <button class="slide-btn slide-next">&#8250;</button>
+          <div class="slide-dots"><span class="sdot active"></span><span class="sdot"></span></div>
+        </div>
         <div class="body">
           <span class="tag">Muebles funcionales</span>
           <h3>Ropero con Espejo</h3>
@@ -941,17 +949,6 @@ footer .gold{font-family:Georgia,serif}
           <p>Estructura mural con nichos individuales para botellas. Un diseño elegante que convierte tu colección en parte de la decoración. Medidas: 2,2 × 1,8 × 0,12 m.</p>
           <span class="price"><small>Desde</small> $1.000.000</span>
           <a class="btn" href="https://wa.me/573162880943?text=Hola%20You%20Know%20Arts%20%F0%9F%91%8B%20quiero%20cotizar%20la%20Cava%20de%20Vinos" target="_blank" rel="noopener">Cotizar</a>
-        </div>
-      </div>
-
-      <div class="card reveal cat-card" data-cat="muebles">
-        <div class="ph"><img src="assets/mueble_gabinete.jpg" alt="Gabinete multiusos con estantes"></div>
-        <div class="body">
-          <span class="tag">Muebles funcionales</span>
-          <h3>Gabinete Multiusos</h3>
-          <p>Armario alto de una puerta con múltiples estantes internos. Funciona en oficina, cocina, cuarto o cualquier espacio que necesite orden.</p>
-          <span class="price"><small>Consultá</small> precio</span>
-          <a class="btn" href="https://wa.me/573162880943?text=Hola%20You%20Know%20Arts%20%F0%9F%91%8B%20quiero%20cotizar%20el%20Gabinete%20Multiusos" target="_blank" rel="noopener">Cotizar</a>
         </div>
       </div>
 
@@ -1107,6 +1104,17 @@ footer .gold{font-family:Georgia,serif}
   background:rgba(255,255,255,.12);color:#fff;font-size:2rem;line-height:1;cursor:pointer}
 #lb-x:hover{background:rgba(255,255,255,.22)}
 .gal a,.card .ph,.star .pic{cursor:zoom-in}
+/* mini carrusel en tarjeta */
+.ph-slider{cursor:pointer}
+.ph-slider .ph-slides{display:flex;width:200%;height:100%;transition:transform .3s ease}
+.ph-slider .ph-slides img{width:50%;height:100%;object-fit:cover;flex-shrink:0}
+.card:hover .ph-slider .ph-slides img{transform:none}
+.slide-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.48);color:#fff;border:0;width:32px;height:32px;border-radius:50%;font-size:1.4rem;line-height:30px;text-align:center;cursor:pointer;z-index:3;padding:0;transition:background .2s}
+.slide-btn:hover{background:rgba(0,0,0,.72)}
+.slide-prev{left:6px}.slide-next{right:6px}
+.slide-dots{position:absolute;bottom:7px;left:0;right:0;display:flex;justify-content:center;gap:5px;pointer-events:none}
+.sdot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.5)}
+.sdot.active{background:#fff}
 </style>
 <script>
 (function(){
@@ -1153,6 +1161,27 @@ footer .gold{font-family:Georgia,serif}
     en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}});
   },{threshold:.12});
   els.forEach(function(e){io.observe(e)});
+})();
+</script>
+<script>
+(function(){
+  function initSlider(ph){
+    var slides=ph.querySelector('.ph-slides');
+    var imgs=slides.querySelectorAll('img');
+    var dots=ph.querySelectorAll('.sdot');
+    var idx=0;
+    function go(n){
+      idx=(n+imgs.length)%imgs.length;
+      slides.style.transform='translateX(-'+(idx*50)+'%)';
+      dots.forEach(function(d,i){d.classList.toggle('active',i===idx);});
+    }
+    ph.querySelector('.slide-prev').addEventListener('click',function(e){e.stopPropagation();go(idx-1);});
+    ph.querySelector('.slide-next').addEventListener('click',function(e){e.stopPropagation();go(idx+1);});
+    var sx=0;
+    ph.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+    ph.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(dx<0?idx+1:idx-1);});
+  }
+  document.querySelectorAll('.ph-slider').forEach(initSlider);
 })();
 </script>
 </body>
