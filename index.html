@@ -134,6 +134,15 @@ section{padding:72px 0}
 .step p{color:var(--muted);font-size:.86rem;margin:0}
 @media(max-width:820px){.steps{grid-template-columns:1fr 1fr}}
 
+/* ---------- CATEGORY TABS ---------- */
+.cat-tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.cat-tab{background:var(--panel);border:1px solid var(--line);border-radius:999px;
+  padding:10px 22px;font-size:.88rem;color:var(--muted);cursor:pointer;transition:all .2s;
+  font-family:inherit}
+.cat-tab:hover{border-color:var(--gold);color:var(--cream)}
+.cat-tab.active{background:var(--gold);color:#1a1206;border-color:var(--gold);font-weight:700}
+.cat-card.hidden{display:none}
+
 /* ---------- CONTACT ---------- */
 .contact{text-align:center;background:linear-gradient(180deg,var(--panel),var(--ink));border-top:1px solid var(--line)}
 .contact h2{font-size:clamp(1.9rem,5vw,3rem)}
@@ -174,7 +183,6 @@ footer .gold{font-family:Georgia,serif}
     <nav class="nav-links">
       <a href="#galeria">Galería</a>
       <a href="#catalogo">Catálogo</a>
-      <a href="#muebles">Muebles</a>
       <a href="#proceso">Cómo lo hacemos</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -246,10 +254,22 @@ footer .gold{font-family:Georgia,serif}
     <div class="sec-head reveal">
       <div class="kick">Catálogo</div>
       <h2>Qué creamos</h2>
-      <p>Precios reales de piezas que ya hacemos. ¿Quieres una idea distinta? La diseñamos contigo.</p>
+      <p>Elegí una categoría para ver nuestros productos. ¿Tenés una idea? La diseñamos juntos.</p>
     </div>
-    <div class="cats">
-      <div class="card reveal">
+
+    <div class="cat-tabs reveal">
+      <button class="cat-tab active" data-cat="all">Todos</button>
+      <button class="cat-tab" data-cat="cuadros">Cuadros</button>
+      <button class="cat-tab" data-cat="portacelulares">Portacelulares</button>
+      <button class="cat-tab" data-cat="portavasos">Portavasos</button>
+      <button class="cat-tab" data-cat="muebles">Muebles funcionales</button>
+      <button class="cat-tab" data-cat="mas">Más</button>
+    </div>
+
+    <div class="cats" id="cat-grid">
+
+      <!-- CUADROS -->
+      <div class="card reveal cat-card" data-cat="cuadros">
         <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post3.jpg" alt="Cuadros en resina epóxica"></div>
         <div class="body">
           <span class="tag">Cuadros</span>
@@ -259,17 +279,43 @@ footer .gold{font-family:Georgia,serif}
           <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Lo quiero</a>
         </div>
       </div>
-      <div class="card reveal">
-        <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/parques.jpg" alt="Parqués Super Mario en resina epóxica"></div>
+
+      <div class="card reveal cat-card" data-cat="cuadros">
+        <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post4.jpg" alt="Cuadro Super Mario Bros Deluxe"></div>
         <div class="body">
-          <span class="tag">Juegos</span>
-          <h3>Parqués Super Mario</h3>
-          <p>Diseño 100% personalizado. Tablero de parqués para 6 jugadores con acabado en resina epóxica y fichas 3D de los personajes: Mario, Luigi, Peach, Toad, Donkey Kong y más. Lo creamos con la temática que quieras: una pieza de colección para jugar.</p>
-          <span class="price">$200.000</span>
-          <a class="btn" href="https://wa.me/573162880943?text=Hola%20You%20Know%20Arts%20%F0%9F%91%8B%20quiero%20el%20Parqu%C3%A9s%20Super%20Mario" target="_blank" rel="noopener">Lo quiero</a>
+          <span class="tag">Cuadros</span>
+          <h3>Cuadro Super Mario Bros Deluxe</h3>
+          <p>Impresión 3D con acabado en resina epóxica. 50 × 37 × 4 cm, efecto de profundidad, listo para colgar. También disponible en otros personajes.</p>
+          <span class="price">$250.000</span>
+          <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Lo quiero</a>
         </div>
       </div>
-      <div class="card reveal">
+
+      <div class="card reveal cat-card" data-cat="cuadros">
+        <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post2.jpg" alt="Cuadro personalizado Dragon Ball"></div>
+        <div class="body">
+          <span class="tag">Cuadros</span>
+          <h3>Diseño personalizado</h3>
+          <p>¿Tenés un personaje, una foto o una idea? La convertimos en un cuadro único en resina o madera.</p>
+          <span class="price"><small>Cotizá</small> tu diseño</span>
+          <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Cotizar</a>
+        </div>
+      </div>
+
+      <!-- PORTACELULARES -->
+      <div class="card reveal cat-card" data-cat="portacelulares">
+        <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post11.jpg" alt="Portacelulares y organizadores personalizados"></div>
+        <div class="body">
+          <span class="tag">Portacelulares</span>
+          <h3>Portacelulares y organizadores</h3>
+          <p>Soportes para celular, organizadores de escritorio y piezas funcionales con corte láser y grabado personalizado. Diseñados a tu medida.</p>
+          <span class="price"><small>Cotizá</small> tu pieza</span>
+          <a class="btn" href="https://wa.me/573162880943?text=Hola%20You%20Know%20Arts%20%F0%9F%91%8B%20quiero%20cotizar%20un%20portacelulares%20personalizado" target="_blank" rel="noopener">Cotizar</a>
+        </div>
+      </div>
+
+      <!-- PORTAVASOS -->
+      <div class="card reveal cat-card" data-cat="portavasos">
         <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post5.jpg" alt="Portavasos personalizados"></div>
         <div class="body">
           <span class="tag">Portavasos</span>
@@ -279,27 +325,19 @@ footer .gold{font-family:Georgia,serif}
           <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Lo quiero</a>
         </div>
       </div>
-      <div class="card reveal">
+
+      <div class="card reveal cat-card" data-cat="portavasos">
         <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post10.jpg" alt="Portavasos iglesias de Popayán"></div>
         <div class="body">
-          <span class="tag">Popayán</span>
+          <span class="tag">Portavasos</span>
           <h3>Línea Popayán</h3>
           <p>Set x6 con las principales iglesias de Popayán. El regalo perfecto, con imán para la nevera.</p>
           <span class="price">$40.000 <small>/ set x6</small></span>
           <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Lo quiero</a>
         </div>
       </div>
-      <div class="card reveal">
-        <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post11.jpg" alt="Piezas funcionales personalizadas"></div>
-        <div class="body">
-          <span class="tag">Funcional</span>
-          <h3>Piezas funcionales</h3>
-          <p>Organizadores, portalápices y muebles pequeños grabados con frases o diseños que te representen.</p>
-          <span class="price"><small>Cotiza</small> tu idea</span>
-          <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Cotizar</a>
-        </div>
-      </div>
-      <div class="card reveal">
+
+      <div class="card reveal cat-card" data-cat="portavasos">
         <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post9.jpg" alt="Portavasos frutas"></div>
         <div class="body">
           <span class="tag">Portavasos</span>
@@ -309,44 +347,23 @@ footer .gold{font-family:Georgia,serif}
           <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Lo quiero</a>
         </div>
       </div>
-      <div class="card reveal">
-        <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post2.jpg" alt="Cuadro personalizado Dragon Ball"></div>
-        <div class="body">
-          <span class="tag">A tu medida</span>
-          <h3>Diseño personalizado</h3>
-          <p>¿Tienes un personaje, una foto o una idea? La convertimos en una pieza única en resina o madera.</p>
-          <span class="price"><small>Cotiza</small> tu diseño</span>
-          <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Cotizar</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="muebles" style="background:var(--panel)">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="kick">Muebles en Melamina</div>
-      <h2>Fabricamos tu espacio</h2>
-      <p>Cada mueble hecho a medida, con diseño digital y acabados de calidad. Consultá por precio y dimensiones.</p>
-    </div>
-    <div class="cats">
-
-      <div class="card reveal">
+      <!-- MUEBLES FUNCIONALES -->
+      <div class="card reveal cat-card" data-cat="muebles">
         <div class="ph"><img src="assets/mueble_farmacia.jpg" alt="Estante para farmacia con cajones organizadores"></div>
         <div class="body">
-          <span class="tag">Comercial</span>
+          <span class="tag">Muebles funcionales</span>
           <h3>Estante para Farmacia</h3>
-          <p>Estante con repisas y cajones organizadores identificados por letra. Ideal para farmacias, papelerías y tiendas con gran variedad de productos. Medidas: 2 × 1,3 × 0,5 m.</p>
+          <p>Estante con repisas y cajones organizadores identificados por letra. Ideal para farmacias, papelerías y tiendas. Medidas: 2 × 1,3 × 0,5 m.</p>
           <span class="price"><small>Desde</small> $2.000.000</span>
           <a class="btn" href="https://wa.me/573162880943?text=Hola%20You%20Know%20Arts%20%F0%9F%91%8B%20quiero%20cotizar%20el%20Estante%20para%20Farmacia" target="_blank" rel="noopener">Cotizar</a>
         </div>
       </div>
 
-      <div class="card reveal">
+      <div class="card reveal cat-card" data-cat="muebles">
         <div class="ph"><img src="assets/mueble_ropero_espejo.jpg" alt="Ropero con espejo de cuerpo entero"></div>
         <div class="body">
-          <span class="tag">Dormitorio</span>
+          <span class="tag">Muebles funcionales</span>
           <h3>Ropero con Espejo</h3>
           <p>Armario de una puerta con espejo de cuerpo entero integrado. Ahorra espacio y da elegancia a cualquier habitación. Medidas: 1,8 × 0,5 × 0,3 m.</p>
           <span class="price"><small>Desde</small> $800.000</span>
@@ -354,10 +371,21 @@ footer .gold{font-family:Georgia,serif}
         </div>
       </div>
 
-      <div class="card reveal">
+      <div class="card reveal cat-card" data-cat="muebles">
+        <div class="ph"><img src="assets/exhibidor_vinos.jpg" alt="Cava de vinos en melamina"></div>
+        <div class="body">
+          <span class="tag">Muebles funcionales</span>
+          <h3>Cava de Vinos</h3>
+          <p>Estructura mural con nichos individuales para botellas. Un diseño elegante que convierte tu colección en parte de la decoración. Medidas: 2,2 × 1,8 × 0,12 m.</p>
+          <span class="price"><small>Desde</small> $1.000.000</span>
+          <a class="btn" href="https://wa.me/573162880943?text=Hola%20You%20Know%20Arts%20%F0%9F%91%8B%20quiero%20cotizar%20la%20Cava%20de%20Vinos" target="_blank" rel="noopener">Cotizar</a>
+        </div>
+      </div>
+
+      <div class="card reveal cat-card" data-cat="muebles">
         <div class="ph"><img src="assets/mueble_gabinete.jpg" alt="Gabinete multiusos con estantes"></div>
         <div class="body">
-          <span class="tag">Almacenamiento</span>
+          <span class="tag">Muebles funcionales</span>
           <h3>Gabinete Multiusos</h3>
           <p>Armario alto de una puerta con múltiples estantes internos. Funciona en oficina, cocina, cuarto o cualquier espacio que necesite orden.</p>
           <span class="price"><small>Consultá</small> precio</span>
@@ -365,10 +393,10 @@ footer .gold{font-family:Georgia,serif}
         </div>
       </div>
 
-      <div class="card reveal">
+      <div class="card reveal cat-card" data-cat="muebles">
         <div class="ph"><img src="assets/mueble_portabotellas.jpg" alt="Porta botellas decorativo con iluminación LED"></div>
         <div class="body">
-          <span class="tag">Decoración</span>
+          <span class="tag">Muebles funcionales</span>
           <h3>Porta Botellas con LED</h3>
           <p>Marco decorativo para pared con soporte para botellas y tira LED de colores intercambiables. Perfecto para bares, restaurantes o salas.</p>
           <span class="price"><small>Consultá</small> precio</span>
@@ -376,10 +404,10 @@ footer .gold{font-family:Georgia,serif}
         </div>
       </div>
 
-      <div class="card reveal">
+      <div class="card reveal cat-card" data-cat="muebles">
         <div class="ph"><img src="assets/mueble_mesa_auxiliar.jpg" alt="Mesa auxiliar con ruedas y grabado decorativo"></div>
         <div class="body">
-          <span class="tag">Sala / Estudio</span>
+          <span class="tag">Muebles funcionales</span>
           <h3>Mesa Auxiliar con Ruedas</h3>
           <p>Mesa compacta bicolor con grabado decorativo y ruedas para moverla fácil. Ideal como soporte para impresora, computador o parlante.</p>
           <span class="price"><small>Consultá</small> precio</span>
@@ -387,10 +415,10 @@ footer .gold{font-family:Georgia,serif}
         </div>
       </div>
 
-      <div class="card reveal">
+      <div class="card reveal cat-card" data-cat="muebles">
         <div class="ph"><img src="assets/mueble_biblioteca.jpg" alt="Biblioteca modular con puertas inferiores"></div>
         <div class="body">
-          <span class="tag">Sala</span>
+          <span class="tag">Muebles funcionales</span>
           <h3>Biblioteca Modular</h3>
           <p>Biblioteca con compartimentos de distintos tamaños para libros, colecciones y decoración, más puertas en la parte inferior para almacenamiento cerrado.</p>
           <span class="price"><small>Consultá</small> precio</span>
@@ -398,10 +426,10 @@ footer .gold{font-family:Georgia,serif}
         </div>
       </div>
 
-      <div class="card reveal">
+      <div class="card reveal cat-card" data-cat="muebles">
         <div class="ph"><img src="assets/mueble_tv.jpg" alt="Centro de entretenimiento mueble TV largo"></div>
         <div class="body">
-          <span class="tag">Sala</span>
+          <span class="tag">Muebles funcionales</span>
           <h3>Centro de Entretenimiento</h3>
           <p>Mueble largo y bajo para TV con estantes abiertos y cajón. Espacio para libros, equipos de sonido y colecciones, todo sobre ruedas.</p>
           <span class="price"><small>Consultá</small> precio</span>
@@ -409,10 +437,10 @@ footer .gold{font-family:Georgia,serif}
         </div>
       </div>
 
-      <div class="card reveal">
+      <div class="card reveal cat-card" data-cat="muebles">
         <div class="ph"><img src="assets/mueble_meson_cocina.jpg" alt="Mesón de cocina con cubierta en resina epóxica"></div>
         <div class="body">
-          <span class="tag">Cocina</span>
+          <span class="tag">Muebles funcionales</span>
           <h3>Mesón con Cubierta en Resina</h3>
           <p>Muebles bajos de cocina con cubierta acabada en resina epóxica. Resistente, fácil de limpiar y con un elegante efecto mármol.</p>
           <span class="price"><small>Consultá</small> precio</span>
@@ -420,10 +448,10 @@ footer .gold{font-family:Georgia,serif}
         </div>
       </div>
 
-      <div class="card reveal">
+      <div class="card reveal cat-card" data-cat="muebles">
         <div class="ph"><img src="assets/mueble_cocina_integral.jpg" alt="Cocina integral completa en melamina"></div>
         <div class="body">
-          <span class="tag">Cocina</span>
+          <span class="tag">Muebles funcionales</span>
           <h3>Cocina Integral</h3>
           <p>Cocina completa con muebles altos y bajos, espacio para estufa y extractor. Fabricada a medida en melamina de alta durabilidad.</p>
           <span class="price"><small>Consultá</small> precio</span>
@@ -431,10 +459,10 @@ footer .gold{font-family:Georgia,serif}
         </div>
       </div>
 
-      <div class="card reveal">
+      <div class="card reveal cat-card" data-cat="muebles">
         <div class="ph"><img src="assets/mueble_banio.jpg" alt="Mueble de baño con espacio para lavamanos"></div>
         <div class="body">
-          <span class="tag">Baño</span>
+          <span class="tag">Muebles funcionales</span>
           <h3>Mueble de Baño</h3>
           <p>Gabinete bajo con dos puertas y espacio para lavamanos sobrepuesto. Resistente a la humedad y disponible en varios acabados.</p>
           <span class="price"><small>Consultá</small> precio</span>
@@ -442,37 +470,18 @@ footer .gold{font-family:Georgia,serif}
         </div>
       </div>
 
-      <div class="card reveal">
-        <div class="ph"><img src="assets/exhibidor_vinos.jpg" alt="Cava de vinos en melamina con espacios para botellas"></div>
+      <!-- MÁS -->
+      <div class="card reveal cat-card" data-cat="mas">
+        <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/parques.jpg" alt="Parqués Super Mario en resina epóxica"></div>
         <div class="body">
-          <span class="tag">Decoración</span>
-          <h3>Cava de Vinos</h3>
-          <p>Estructura mural con nichos individuales para botellas. Un diseño elegante que convierte tu colección de vinos en parte de la decoración. Medidas: 2,2 × 1,8 × 0,12 m.</p>
-          <span class="price"><small>Desde</small> $1.000.000</span>
-          <a class="btn" href="https://wa.me/573162880943?text=Hola%20You%20Know%20Arts%20%F0%9F%91%8B%20quiero%20cotizar%20la%20Cava%20de%20Vinos" target="_blank" rel="noopener">Cotizar</a>
+          <span class="tag">Más</span>
+          <h3>Parqués Super Mario</h3>
+          <p>Diseño 100% personalizado. Tablero para 6 jugadores con acabado en resina epóxica y fichas 3D de los personajes. Una pieza de colección para jugar.</p>
+          <span class="price">$200.000</span>
+          <a class="btn" href="https://wa.me/573162880943?text=Hola%20You%20Know%20Arts%20%F0%9F%91%8B%20quiero%20el%20Parqu%C3%A9s%20Super%20Mario" target="_blank" rel="noopener">Lo quiero</a>
         </div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<section id="estrella">
-  <div class="wrap">
-    <div class="star reveal">
-      <div class="pic"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post4.jpg" alt="Cuadro Super Mario Bros Deluxe"></div>
-      <div>
-        <span class="tag">Pieza estrella</span>
-        <h3>Cuadro Super Mario Bros Deluxe</h3>
-        <span class="price">$250.000</span>
-        <ul>
-          <li>Impresión 3D con acabado en resina epóxica</li>
-          <li>Dimensiones 50 × 37 × 4 cm</li>
-          <li>Efecto de profundidad, listo para colgar</li>
-          <li>Hecho por encargo — también en otros personajes</li>
-        </ul>
-        <a class="btn" href="https://ig.me/m/youknow_arts" target="_blank" rel="noopener">Pedir esta pieza</a>
-      </div>
     </div>
   </div>
 </section>
@@ -552,6 +561,26 @@ footer .gold{font-family:Georgia,serif}
   document.getElementById('lb-x').addEventListener('click',close);
   lb.addEventListener('click',function(e){if(e.target===lb)close();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+</script>
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.cat-tab');
+  var cards=document.querySelectorAll('.cat-card');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){
+      tabs.forEach(function(t){t.classList.remove('active')});
+      tab.classList.add('active');
+      var cat=tab.getAttribute('data-cat');
+      cards.forEach(function(card){
+        if(cat==='all'||card.getAttribute('data-cat')===cat){
+          card.classList.remove('hidden');
+        }else{
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
 })();
 </script>
 <script>
