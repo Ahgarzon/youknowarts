@@ -141,9 +141,10 @@ section{padding:72px 0}
 .cat-tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
 .cat-tab{background:var(--panel);border:1px solid var(--line);border-radius:999px;
   padding:10px 22px;font-size:.88rem;color:var(--muted);cursor:pointer;transition:all .2s;
-  font-family:inherit}
+  font-family:inherit;min-width:158px;text-align:center}
 .cat-tab:hover{border-color:var(--gold);color:var(--cream)}
 .cat-tab.active{background:var(--gold);color:#1a1206;border-color:var(--gold);font-weight:700}
+.cat-tab.cat-all{min-width:220px;padding:12px 40px}
 .cat-card.hidden{display:none}
 
 /* ---------- CONTACT ---------- */
@@ -258,12 +259,12 @@ footer .gold{font-family:Georgia,serif}
     </div>
 
     <div class="cat-tabs reveal">
-      <button class="cat-tab active" data-cat="all">Todos</button>
-      <button class="cat-tab" data-cat="cuadros">Cuadros</button>
+      <button class="cat-tab active" data-cat="cuadros">Cuadros</button>
       <button class="cat-tab" data-cat="portacelulares">Portacelulares</button>
       <button class="cat-tab" data-cat="portavasos">Portavasos</button>
       <button class="cat-tab" data-cat="muebles">Muebles funcionales</button>
       <button class="cat-tab" data-cat="mas">Más</button>
+      <button class="cat-tab cat-all" data-cat="all">Todo</button>
     </div>
 
     <div class="cats" id="cat-grid">
@@ -1126,20 +1127,23 @@ footer .gold{font-family:Georgia,serif}
 (function(){
   var tabs=document.querySelectorAll('.cat-tab');
   var cards=document.querySelectorAll('.cat-card');
+  function filterCat(cat){
+    cards.forEach(function(card){
+      if(cat==='all'||card.getAttribute('data-cat')===cat){
+        card.classList.remove('hidden');
+      }else{
+        card.classList.add('hidden');
+      }
+    });
+  }
   tabs.forEach(function(tab){
     tab.addEventListener('click',function(){
       tabs.forEach(function(t){t.classList.remove('active')});
       tab.classList.add('active');
-      var cat=tab.getAttribute('data-cat');
-      cards.forEach(function(card){
-        if(cat==='all'||card.getAttribute('data-cat')===cat){
-          card.classList.remove('hidden');
-        }else{
-          card.classList.add('hidden');
-        }
-      });
+      filterCat(tab.getAttribute('data-cat'));
     });
   });
+  filterCat('cuadros');
 })();
 </script>
 <script>
