@@ -213,8 +213,8 @@ footer .gold{font-family:Georgia,serif}
 
 <div class="marquee">
   <div class="track">
-    <span><i>El arte de crear a tu medida</i><i>Portavasos</i><i>Portacelulares</i><i>Cuadros</i><i>Muebles funcionales</i><i>y mucho más</i><i>Impresión 3D</i><i>Corte láser</i><i>CAD</i><i>Resina epóxica</i></span>
-    <span><i>El arte de crear a tu medida</i><i>Portavasos</i><i>Portacelulares</i><i>Cuadros</i><i>Muebles funcionales</i><i>y mucho más</i><i>Impresión 3D</i><i>Corte láser</i><i>CAD</i><i>Resina epóxica</i></span>
+    <span><i>El arte de crear a tu medida</i><i>Portavasos</i><i>Portacelulares</i><i>Cuadros</i><i>Muebles funcionales</i><i>y mucho más</i><i>Impresión 3D</i><i>Corte láser</i><i>Diseño CAD</i><i>Resina epóxica</i></span>
+    <span><i>El arte de crear a tu medida</i><i>Portavasos</i><i>Portacelulares</i><i>Cuadros</i><i>Muebles funcionales</i><i>y mucho más</i><i>Impresión 3D</i><i>Corte láser</i><i>Diseño CAD</i><i>Resina epóxica</i></span>
   </div>
 </div>
 
@@ -1173,6 +1173,38 @@ footer .gold{font-family:Georgia,serif}
     ph.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(dx<0?idx+1:idx-1);});
   }
   document.querySelectorAll('.ph-slider').forEach(initSlider);
+})();
+</script>
+<script>
+(function(){
+  var marquee=document.querySelector('.marquee');
+  var track=marquee&&marquee.querySelector('.track');
+  if(!track)return;
+  track.style.animation='none';
+  var dur=26000,x=0,lastTs=null,mult=1;
+  function step(ts){
+    if(lastTs===null)lastTs=ts;
+    var dt=ts-lastTs;lastTs=ts;
+    var halfW=track.scrollWidth/2;
+    if(halfW<=0){requestAnimationFrame(step);return;}
+    x-=(halfW/dur)*mult*dt;
+    while(x<=-halfW)x+=halfW;
+    while(x>0)x-=halfW;
+    track.style.transform='translateX('+x+'px)';
+    if(mult!==1){
+      mult+=(1-mult)*Math.min(dt*0.0008,0.06);
+      if(Math.abs(mult-1)<0.02)mult=1;
+    }
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+  var sx=0;
+  marquee.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+  marquee.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)<20)return;
+    mult=dx<0?4:-2;
+  },{passive:true});
 })();
 </script>
 </body>
