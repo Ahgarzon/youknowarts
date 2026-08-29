@@ -303,6 +303,31 @@ footer .gold{font-family:Georgia,serif}
         </div>
       </div>
 
+      <div class="card reveal cat-card" data-cat="cuadros">
+        <div class="ph ph-slider">
+          <div class="ph-slides">
+            <img src="assets/cuadro-deadpool.jpg" alt="Cuadro Deadpool en resina epóxica">
+            <div class="ig-slide" onclick="window.open('https://www.instagram.com/p/DaEwwW1jUl-/','_blank')">
+              <div class="ig-overlay">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <b>Ver en Instagram</b>
+                <small>Tocá para ver el video</small>
+              </div>
+            </div>
+          </div>
+          <button class="slide-btn slide-prev">&#8249;</button>
+          <button class="slide-btn slide-next">&#8250;</button>
+          <div class="slide-dots"><span class="sdot active"></span><span class="sdot"></span></div>
+        </div>
+        <div class="body">
+          <span class="tag">Cuadros</span>
+          <h3>Cuadro Deadpool</h3>
+          <p>Cuadro en resina epóxica con efecto de profundidad y acabado brillante. Deslizá para ver el video en Instagram.</p>
+          <span class="price">$80.000</span>
+          <a class="btn" href="https://wa.me/573162880943?text=Hola%20You%20Know%20Arts%20%F0%9F%91%8B%20quiero%20el%20Cuadro%20Deadpool%20en%20resina" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+
       <!-- PORTACELULARES -->
       <div class="card reveal cat-card" data-cat="portacelulares">
         <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/porta-snoopy-casita-3d.jpg" alt="Portacelular 3D Snoopy en su casita"></div>
@@ -1105,6 +1130,12 @@ footer .gold{font-family:Georgia,serif}
 .slide-dots{position:absolute;bottom:7px;left:0;right:0;display:flex;justify-content:center;gap:5px;pointer-events:none}
 .sdot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.5)}
 .sdot.active{background:#fff}
+.ph-slider .ph-slides > div{width:50%;height:100%;flex-shrink:0}
+.ig-slide{background:linear-gradient(135deg,#405DE6 0%,#833AB4 40%,#E1306C 70%,#FD1D1D 100%);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none}
+.ig-overlay{display:flex;flex-direction:column;align-items:center;gap:10px;color:#fff;text-align:center;padding:16px}
+.ig-overlay svg{width:48px;height:48px;fill:#fff;opacity:.92}
+.ig-overlay b{font-size:1rem;font-weight:700;letter-spacing:.3px}
+.ig-overlay small{font-size:.8rem;opacity:.82}
 </style>
 <script>
 (function(){
@@ -1160,11 +1191,11 @@ footer .gold{font-family:Georgia,serif}
 (function(){
   function initSlider(ph){
     var slides=ph.querySelector('.ph-slides');
-    var imgs=slides.querySelectorAll('img');
+    var items=Array.from(slides.children);
     var dots=ph.querySelectorAll('.sdot');
     var idx=0;
     function go(n){
-      idx=(n+imgs.length)%imgs.length;
+      idx=(n+items.length)%items.length;
       slides.style.transform='translateX(-'+(idx*50)+'%)';
       dots.forEach(function(d,i){d.classList.toggle('active',i===idx);});
     }
