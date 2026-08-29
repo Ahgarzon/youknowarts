@@ -103,6 +103,8 @@ section{padding:72px 0}
 .card .ph{aspect-ratio:4/3;overflow:hidden;background:var(--panel2)}
 .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .card:hover .ph img{transform:scale(1.06)}
+.card .ph.portrait{aspect-ratio:3/4}
+.card .ph.portrait img,.card .ph.portrait .ph-slides img{object-fit:contain}
 .card .body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
 .card h3{font-size:1.25rem}
 .card p{color:var(--muted);font-size:.92rem;margin:0;flex:1}
@@ -1213,6 +1215,20 @@ footer .gold{font-family:Georgia,serif}
     ph.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(dx<0?idx+1:idx-1);});
   }
   document.querySelectorAll('.ph-slider').forEach(initSlider);
+})();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.card .ph img').forEach(function(img){
+    function check(){
+      if(img.naturalHeight > img.naturalWidth){
+        var ph=img.closest('.ph');
+        if(ph) ph.classList.add('portrait');
+      }
+    }
+    if(img.complete && img.naturalWidth > 0) check();
+    else img.addEventListener('load', check);
+  });
 })();
 </script>
 <script>
