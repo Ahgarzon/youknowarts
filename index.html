@@ -302,7 +302,7 @@ footer .gold{font-family:Georgia,serif}
       </div>
 
       <div class="card reveal cat-card" data-cat="cuadros">
-        <div class="ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post2.jpg" alt="Cuadro personalizado Dragon Ball"></div>
+        <div class="ph landscape-forced"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/post2.jpg" alt="Cuadro personalizado Dragon Ball"></div>
         <div class="body">
           <span class="tag">Cuadros</span>
           <h3>Diseño personalizado</h3>
@@ -1221,8 +1221,9 @@ footer .gold{font-family:Georgia,serif}
 (function(){
   document.querySelectorAll('.card .ph img').forEach(function(img){
     function check(){
+      var ph=img.closest('.ph');
+      if(ph && ph.classList.contains('landscape-forced')) return;
       if(img.naturalHeight > img.naturalWidth){
-        var ph=img.closest('.ph');
         if(ph) ph.classList.add('portrait');
       }
     }
