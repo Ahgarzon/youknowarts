@@ -1160,7 +1160,7 @@ footer .gold{font-family:Georgia,serif}
   var cards=document.querySelectorAll('.cat-card');
   function filterCat(cat){
     var grid=document.getElementById('cat-grid');
-    if(cat==='all'){grid.classList.add('cats-all');}
+    if(cat==='all'||cat==='portacelulares'){grid.classList.add('cats-all');}
     else{grid.classList.remove('cats-all');}
     cards.forEach(function(card){
       if(cat==='all'||card.getAttribute('data-cat')===cat){
