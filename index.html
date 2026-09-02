@@ -1246,16 +1246,27 @@ footer .gold{font-family:Georgia,serif}
     var items=Array.from(slides.children);
     var dots=ph.querySelectorAll('.sdot');
     var idx=0;
+    var autoTimer=null;
+    function startAuto(){
+      clearTimeout(autoTimer);
+      autoTimer=setTimeout(function(){go(idx+1);},3000);
+    }
+    function stopAuto(){clearTimeout(autoTimer);autoTimer=null;}
     function go(n){
       idx=(n+items.length)%items.length;
       slides.style.transform='translateX(-'+(idx*50)+'%)';
       dots.forEach(function(d,i){d.classList.toggle('active',i===idx);});
+      startAuto();
     }
     ph.querySelector('.slide-prev').addEventListener('click',function(e){e.stopPropagation();go(idx-1);});
     ph.querySelector('.slide-next').addEventListener('click',function(e){e.stopPropagation();go(idx+1);});
     var sx=0;
     ph.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
     ph.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(dx<0?idx+1:idx-1);});
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){if(entry.isIntersecting)startAuto();else stopAuto();});
+    },{threshold:0.4});
+    obs.observe(ph);
   }
   document.querySelectorAll('.ph-slider').forEach(initSlider);
 })();
