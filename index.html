@@ -752,14 +752,14 @@ footer .gold{font-family:Georgia,serif}
       </div>
 
       <div class="card reveal cat-card" data-cat="portacelulares">
-        <div class="ph slider-wrap" id="slider-popayan">
-          <button class="sl-prev" onclick="moveSlide('slider-popayan',-1)" aria-label="Anterior">&#8249;</button>
-          <div class="sl-track">
-            <img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/porta-popayan-color.jpg" alt="Portacelular Popayán Arte colorido">
-            <img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/porta-popayan-bw.jpg" alt="Portacelular Popayán Fondo blanco grabado">
+        <div class="slider-wrap" data-interval="3000">
+          <div class="slider-track">
+            <div class="slide ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/porta-popayan-color.jpg" alt="Portacelular Popayán Arte colorido"></div>
+            <div class="slide ph"><img src="https://raw.githubusercontent.com/Ahgarzon/youknowarts/main/assets/porta-popayan-bw.jpg" alt="Portacelular Popayán Fondo blanco grabado"></div>
           </div>
-          <button class="sl-next" onclick="moveSlide('slider-popayan',1)" aria-label="Siguiente">&#8250;</button>
-          <div class="sl-dots" id="dots-slider-popayan"></div>
+          <button class="sl-prev" aria-label="Anterior">&#8249;</button>
+          <button class="sl-next" aria-label="Siguiente">&#8250;</button>
+          <div class="sl-dots"><span class="sl-dot active"></span><span class="sl-dot"></span></div>
         </div>
         <div class="body">
           <span class="tag">Portacelulares</span>
