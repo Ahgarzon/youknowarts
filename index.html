@@ -117,6 +117,10 @@ section{padding:72px 0}
 .card .btn{align-self:flex-start;margin-top:6px}
 @media(max-width:860px){.cats{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.cats{grid-template-columns:1fr}}
+.cats.cats-all{grid-template-columns:1fr 1fr!important}
+.cats.cats-all .card h3{font-size:1rem}
+.cats.cats-all .card .body{padding:12px 12px 14px}
+.cats.cats-all .card p{font-size:.8rem}
 
 /* ---------- STAR PRODUCT ---------- */
 .star{display:grid;grid-template-columns:1.05fr 1fr;gap:34px;align-items:center;
@@ -1155,6 +1159,9 @@ footer .gold{font-family:Georgia,serif}
   var tabs=document.querySelectorAll('.cat-tab');
   var cards=document.querySelectorAll('.cat-card');
   function filterCat(cat){
+    var grid=document.getElementById('cat-grid');
+    if(cat==='all'){grid.classList.add('cats-all');}
+    else{grid.classList.remove('cats-all');}
     cards.forEach(function(card){
       if(cat==='all'||card.getAttribute('data-cat')===cat){
         card.classList.remove('hidden');
