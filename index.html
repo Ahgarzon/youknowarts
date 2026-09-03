@@ -1171,7 +1171,7 @@ footer .gold{font-family:Georgia,serif}
   function filterCat(cat){
     var grid=document.getElementById('cat-grid');
     if(cat==='all'){grid.classList.add('cats-todo');grid.classList.remove('cats-all');}
-    else if(cat==='portacelulares'){grid.classList.add('cats-all');grid.classList.remove('cats-todo');}
+    else if(cat==='portacelulares'){grid.classList.remove('cats-all');grid.classList.remove('cats-todo');}
     else{grid.classList.remove('cats-all');grid.classList.remove('cats-todo');}
     cards.forEach(function(card){
       if(cat==='all'||card.getAttribute('data-cat')===cat){
