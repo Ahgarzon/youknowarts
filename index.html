@@ -121,6 +121,11 @@ section{padding:72px 0}
 .cats.cats-all .card h3{font-size:1rem}
 .cats.cats-all .card .body{padding:12px 12px 14px}
 .cats.cats-all .card p{font-size:.8rem}
+.cats.cats-todo{grid-template-columns:repeat(4,1fr)!important}
+.cats.cats-todo .card h3{font-size:1rem}
+.cats.cats-todo .card .body{padding:12px 12px 14px}
+.cats.cats-todo .card p{font-size:.8rem}
+@media(max-width:860px){.cats.cats-todo{grid-template-columns:1fr 1fr!important}}
 
 /* ---------- STAR PRODUCT ---------- */
 .star{display:grid;grid-template-columns:1.05fr 1fr;gap:34px;align-items:center;
@@ -1165,8 +1170,9 @@ footer .gold{font-family:Georgia,serif}
   var cards=document.querySelectorAll('.cat-card');
   function filterCat(cat){
     var grid=document.getElementById('cat-grid');
-    if(cat==='all'||cat==='portacelulares'){grid.classList.add('cats-all');}
-    else{grid.classList.remove('cats-all');}
+    if(cat==='all'){grid.classList.add('cats-todo');grid.classList.remove('cats-all');}
+    else if(cat==='portacelulares'){grid.classList.add('cats-all');grid.classList.remove('cats-todo');}
+    else{grid.classList.remove('cats-all');grid.classList.remove('cats-todo');}
     cards.forEach(function(card){
       if(cat==='all'||card.getAttribute('data-cat')===cat){
         card.classList.remove('hidden');
